@@ -1,7 +1,5 @@
 import unittest
-
 from leafnode import LeafNode
-
 
 class TestLeafNode(unittest.TestCase):
     def test_eq(self):
@@ -14,8 +12,6 @@ class TestLeafNode(unittest.TestCase):
         self.assertNotEqual(node.to_html(), node3.to_html())
         self.assertNotEqual(node.__repr__(), node3.__repr__())
         self.assertNotEqual(node4.__repr__(), node3.__repr__())
-        
-
 
 if __name__ == "__main__":
     unittest.main()
