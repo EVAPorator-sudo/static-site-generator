@@ -11,9 +11,9 @@ class HTMLNode():
     def props_to_html(self):
         string_so_far = ""
         for key in self.props:
-            string_so_far =+ f"{key}={self.props[key]} "
-        string_so_far.removesuffix(" ")
+            string_so_far += f"{key}={self.props[key]} "
+        string_so_far.strip(" ")
         return string_so_far
     
     def __repr__(self):
-        print(f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})")
+        return(f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})")
