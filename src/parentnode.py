@@ -4,9 +4,11 @@ class ParentNode(HTMLNode):
     def __init__(self, tag, children, props = None):
         super().__init__(tag, None, children, props)
     
+    # recursively converts children into valid nested HTML syntax
     def children_to_html(self):
         return ''.join(child.to_html() for child in self.children)
     
+    # converts self into valid HTML syntax
     def to_html(self):
         if self.tag is None:
             raise ValueError("ParentNode must have a tag")

@@ -5,6 +5,7 @@ from leafnode import LeafNode
 class TestHTMLNode(unittest.TestCase):
 
     def test_eq(self):
+        # tests parentnode constructiton and HTML conversions including nested parents 
         leaf1 = LeafNode("h1", "Leaf 1 content", {"href": "https://www.google.com"})
         leaf2 = LeafNode("h1", "Leaf 2 content", {"href": "https://www.bing.com"})
         nested_parent = ParentNode("h1", [leaf1, ParentNode("h1", [leaf2]), LeafNode("h1", "Leaf 3 content")])

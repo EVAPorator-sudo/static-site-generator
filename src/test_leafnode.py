@@ -2,6 +2,7 @@ import unittest
 from leafnode import LeafNode
 
 class TestLeafNode(unittest.TestCase):
+    # tests valid constructiton of leafnodes 
     def test_eq(self):
         node = LeafNode("h1", "this is a test node", {"href": "https://www.google.com"})
         node2 = LeafNode("h1", "this is a test node", {"href": "https://www.google.com"})

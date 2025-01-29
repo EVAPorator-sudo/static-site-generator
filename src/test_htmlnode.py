@@ -1,8 +1,9 @@
-from htmlnode import HTMLNode
 import unittest
+from htmlnode import HTMLNode
 
-class TestHTMLNode():
+class TestHTMLNode(unittest.TestCase):
     def test_eq(self):
+        # tests various htmlnode attributes
         node = HTMLNode("h1", "this is a test node", None, {"href": "https://www.google.com"})
         node2 = HTMLNode("h1", "this is a test node", None, {"href": "https://www.google.com"})
         node3 = HTMLNode("h1", "this is another test node",["node1", "node2"] , {"href": "https://www.google.com"})
