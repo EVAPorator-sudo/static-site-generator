@@ -28,11 +28,11 @@ class LinkSplitterTest(unittest.TestCase):
         # multiple node test
         self.assertEqual(split_nodes_link([node3, node4]), [node3, node4])
         # image and link test
-        self.assertEqual(split_nodes_image(node, node2), [TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.IMAGE, "https://google.com/image.png"), TextNode(" and some more text", TextType.TEXT), node2])
-        self.assertEqual(split_nodes_link(node, node2), [node, TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.LINK, "google.com"), TextNode(" and some text", TextType.TEXT)])
+        self.assertEqual(split_nodes_image([node, node2]), [TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.IMAGE, "https://google.com/image.png"), TextNode(" and some more text", TextType.TEXT), node2])
+        self.assertEqual(split_nodes_link([node, node2]), [node, TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.LINK, "google.com"), TextNode(" and some text", TextType.TEXT)])
         # nested functions test
-        self.assertEqual(split_nodes_image(split_nodes_link(node, node2)), [TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.IMAGE, "https://google.com/image.png"), TextNode(" and some more text", TextType.TEXT), TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.LINK, "google.com"), TextNode(" and some text", TextType.TEXT)])
-        self.assertEqual(split_nodes_link(split_nodes_image(node, node2)), split_nodes_image(split_nodes_link(node, node2)))
+        self.assertEqual(split_nodes_image(split_nodes_link([node, node2])), [TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.IMAGE, "https://google.com/image.png"), TextNode(" and some more text", TextType.TEXT), TextNode("here is a link ", TextType.TEXT), TextNode("this is an url", TextType.LINK, "google.com"), TextNode(" and some text", TextType.TEXT)])
+        self.assertEqual(split_nodes_link(split_nodes_image([node, node2])), split_nodes_image(split_nodes_link([node, node2])))
 
 if __name__ == "__main__":
     unittest.main()
