@@ -14,7 +14,8 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             if text[0] == delimiter:
                 type = node.type
             for string in split_text:
-                new_nodes.append(TextNode(string, type))
+                if string:
+                    new_nodes.append(TextNode(string, type))
                 if type == text_type:
                     type = TextType.TEXT
                 else:

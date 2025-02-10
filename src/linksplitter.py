@@ -12,13 +12,16 @@ def splitter(nodes, type):
         if node.text_type == TextType.TEXT:
             text = node.text 
             split_text = re.split(regex, text)
-            links = re.findall(regex, text)
-            for i in range(0, len(links)):
-                if split_text[i]:
-                    new_node_list.append(TextNode(split_text[i], TextType.TEXT))
-                new_node_list.append(TextNode(links[i][0], type, links[i][1]))
-            if split_text[-1]:
-                new_node_list.append(TextNode(split_text[-1], TextType.TEXT))
+            if split_text[0] == text:
+                new_node_list.append(node)
+            else:
+                links = re.findall(regex, text)
+                for i in range(0, len(links)):
+                    if split_text[i]:
+                        new_node_list.append(TextNode(split_text[i], TextType.TEXT))
+                    new_node_list.append(TextNode(links[i][0], type, links[i][1]))
+                if split_text[-1]:
+                    new_node_list.append(TextNode(split_text[-1], TextType.TEXT))
         else:
             new_node_list.append(node)
     return new_node_list
