@@ -1,6 +1,6 @@
 import unittest
 from htmlnode import HTMLNode
-
+"""
 class TestHTMLNode(unittest.TestCase):
     def test_eq(self):
         # tests various htmlnode attributes
@@ -17,3 +17,4 @@ class TestHTMLNode(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+"""

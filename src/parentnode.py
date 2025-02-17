@@ -6,7 +6,7 @@ class ParentNode(HTMLNode):
     
     # recursively converts children into valid nested HTML syntax
     def children_to_html(self):
-        return ''.join(child.to_html() for child in self.children)
+        return ''.join(''.join(child.to_html() for child in self.children))
     
     # converts self into valid HTML syntax
     def to_html(self):

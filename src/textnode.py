@@ -36,12 +36,12 @@ class TextNode():
             case TextType.BOLD:
                 return LeafNode("b", self.text)
             case TextType.ITALIC: 
-                return HTMLNode("i", self.text)
+                return LeafNode("i", self.text)
             case TextType.CODE:
-                return HTMLNode("code", self.text)
+                return LeafNode("code", self.text)
             case TextType.LINK:
-                return HTMLNode("a", self.text, None,{"href" : self.url})
+                return LeafNode("a", self.text, {"href" : self.url})
             case TextType.IMAGE:
-                return HTMLNode("img", "",None, {"src" : self.url, "alt" : self.text})
+                return LeafNode("img", "", {"src" : self.url, "alt" : self.text})
             case _:
                 raise Exception("Invalid node type")

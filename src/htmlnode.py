@@ -6,8 +6,8 @@ class HTMLNode():
         self.props = props
     
     # equality comparison for testing
-    def __eq__(self, other):
-        return (self.tag == other.tag and self.text == other.text and self.children == other.children and self.props == other.props)
+    #def __eq__(self, other):
+    #    return (self.tag == other.tag and self.text == other.text and self.children == other.children and self.props == other.props)
 
     # not implemented yet
     def to_html(self):

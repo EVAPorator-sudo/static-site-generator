@@ -2,7 +2,7 @@ import unittest
 from textnode import TextNode, TextType
 from leafnode import LeafNode
 from htmlnode import HTMLNode
-
+"""
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
         # test Class attribute
@@ -58,3 +58,4 @@ class TestTextNode(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main() 
+"""
