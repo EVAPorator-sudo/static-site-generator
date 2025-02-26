@@ -23,8 +23,10 @@ def type_to_tag(block):
         case "paragraph":
             return "p"
     
-def formatter(block, tag = None):
-    if tag == None:
+import re
+
+def formatter(block, tag=None):
+    if tag is None:
         tag = type_to_tag(block)
     if tag not in parenttags:
         match tag:
@@ -33,11 +35,13 @@ def formatter(block, tag = None):
             case "code":
                 return block.strip("```")
             case "blockquote":
+                # Handle multiline blockquotes
                 lines = block.split("\n")
-                return "\n".join(list(map(lambda x: x.lstrip(">>> "), lines)))
+                formatted_lines = [f"{line.lstrip('> ').strip()}" for line in lines]
+                return " ".join(formatted_lines)
             case "li":
                 if re.match(r"^\d", block):
-                    return block.lstrip(r"\d+\.\s")
+                    return re.sub(r"^\d+\.\s", "", block)
                 return block.lstrip("- ").lstrip("* ")
     return block
 

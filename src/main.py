@@ -1,5 +1,7 @@
 import os
 import shutil
+from pagegenerate import generate_page
+
 def copydir(target, destination):
     if not os.path.exists(destination):
         os.makedirs(destination)
@@ -14,6 +16,7 @@ def copydir(target, destination):
 
 
 def main():
+    shutil.rmtree("public")
     copydir("static", "public")
-
+    generate_page("content/index.md", "template.html", "public/index.html")
 main()

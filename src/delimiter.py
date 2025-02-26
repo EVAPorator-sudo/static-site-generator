@@ -12,7 +12,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             split_text = text.split(delimiter)
             type = TextType.TEXT
             if text[0] == delimiter:
-                type = node.type
+                type = node.text_type
             for string in split_text:
                 if string:
                     new_nodes.append(TextNode(string, type))

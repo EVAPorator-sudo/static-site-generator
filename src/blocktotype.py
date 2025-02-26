@@ -1,7 +1,7 @@
 import re
 
 def block_to_block_type(block):
-    blocktype = {"heading" : r"^#{1,6}\s.*", "code" :r"^```.*```$", "quote" : r"^(>>>.*\n?)+", "unordered_list" : r"^[\*\-]\s.*$"}
+    blocktype = {"heading" : r"^#{1,6}\s.*", "code" :r"^```.*```$", "quote" : r"^(>.*\n?)+", "unordered_list" : r"^[\*\-]\s.*$"}
     for type in blocktype:
         if re.match(blocktype[type], block):
             return type
