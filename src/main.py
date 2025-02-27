@@ -16,7 +16,8 @@ def copydir(target, destination):
 
 
 def main():
-    shutil.rmtree("public")
+    if os.path.exists("public"):
+        shutil.rmtree("public")
     copydir("static", "public")
     generate_page_recursively("content", "template.html", "public")
 main()
