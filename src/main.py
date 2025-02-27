@@ -1,6 +1,6 @@
 import os
 import shutil
-from pagegenerate import generate_page
+from genpagerecursive import generate_page_recursively
 
 def copydir(target, destination):
     if not os.path.exists(destination):
@@ -18,5 +18,5 @@ def copydir(target, destination):
 def main():
     shutil.rmtree("public")
     copydir("static", "public")
-    generate_page("content/index.md", "template.html", "public/index.html")
+    generate_page_recursively("content", "template.html", "public")
 main()
