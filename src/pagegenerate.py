@@ -13,13 +13,14 @@ def directory_gen(path):
         if not os.path.exists(current_directory):
             os.mkdir(current_directory)
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     print(f"generating page from {from_path} to {dest_path} from {template_path}")
     with open(from_path, 'r') as from_file:
         markdown = from_file.read()
     with open(template_path, 'r') as template_file:
         template = template_file.read()
     content = markdown_to_html(markdown)
+    content = content.replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')
     title = extract_title(markdown)
     print(title)
     template = template.replace("Title", title)

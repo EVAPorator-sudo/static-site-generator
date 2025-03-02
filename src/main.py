@@ -1,4 +1,5 @@
 import os
+import sys
 import shutil
 from genpagerecursive import generate_page_recursively
 
@@ -16,9 +17,13 @@ def copydir(target, destination):
 
 
 def main():
-    if os.path.exists("public"):
-        shutil.rmtree("public")
-    copydir("static", "public")
-    generate_page_recursively("content", "template.html", "public")
-    
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
+    else:
+        basepath = "/" # deafaults path if no arguements are given
+    if os.path.exists("docs"):
+        shutil.rmtree("docs")
+    copydir("static", "docs")
+    generate_page_recursively("content", "template.html", "docs", basepath)
+
 main()
