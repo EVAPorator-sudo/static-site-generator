@@ -2,13 +2,15 @@ from pagegenerate import generate_page
 import os
 
 def generate_page_recursively(dir_path_content, template_path, dest_dir_path):
+    os.makedirs(dest_dir_path, exist_ok=True) # if the destination directory doesent exist create it
     directory = os.listdir(dir_path_content)
-    for path in directory:
-        fullpath = f"{dir_path_content}/{path}"
-        destpath = f"{dest_dir_path}/{path}"
+    for path in directory: # iterates over everythin in the directory
+        fullpath = os.path.join(dir_path_content, path) 
+        destpath = os.path.join(dest_dir_path, path) # determines the path to pull the content from and the destination
         if os.path.isfile(fullpath) == True:
-            destpath = destpath.rstrip(".md")
-            generate_page(fullpath, template_path, f"{destpath}.html")
+            if fullpath.endswith(".md"):
+                destpath = destpath.removesuffix(".md")
+                generate_page(fullpath, template_path, f"{destpath}.html") # if it is a markdown file convert it into html and copy to the target directory
         else:
-            os.makedirs(destpath)
-            generate_page_recursively(fullpath, template_path, f"{dest_dir_path}/{path}")
+            dest_subdir_path = os.path.join(dest_dir_path, path)
+            generate_page_recursively(fullpath, template_path, dest_subdir_path) # if it is a subdirectory repeat the process inside 

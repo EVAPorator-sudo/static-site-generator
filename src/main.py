@@ -20,4 +20,5 @@ def main():
         shutil.rmtree("public")
     copydir("static", "public")
     generate_page_recursively("content", "template.html", "public")
+    
 main()
